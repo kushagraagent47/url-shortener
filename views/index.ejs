@@ -1,0 +1,14 @@
+<%- include ('partials/header.ejs') %>
+<div class="container">
+    <form method="POST" action="/add/url">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Link</label>
+            <input type="url" name="url" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Add your link here">
+        </div>
+        <button type="submit" class="btn btn-primary">Shorten</button>
+    </form>
+    <% if (message) { %>
+        <div class="alert alert-warning"><%- message %></div>
+        <% } %>
+</div>

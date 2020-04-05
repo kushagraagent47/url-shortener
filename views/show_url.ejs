@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+<div class="container">
+    <div class="alert alert-primary" role="alert">
+        Your url has been shortened visit <a href="/<%= url_value %>"
+            class="alert-link">localhost:8000/<%= url_value %></a> for accessing your url
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-grey" onclick="myFunction()">Copy shortened
+            url</button>
+    </div>
+</div>
+<script>
+   $(function() {
+	$('.copy-to-clipboard input').click(function() {
+	$(this).focus();
+	$(this).select();
+	document.execCommand('copy');
+	$(".copied").text("Copied to clipboard").show().fadeOut(1200);
+    });
+});
+</script>
+
+<%- include('partials/footer') %>
