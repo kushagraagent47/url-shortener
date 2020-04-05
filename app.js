@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require("express");
 var app = express();
 var path = require('path');
@@ -9,7 +10,11 @@ const { check, validationResult } = require('express-validator');
 var session = require('express-session');
 var port = process.env.PORT || 8000;
 var router = express.Router();
-var cookieParser = require('cookie-parser')
+var randomstring = require("randomstring");
+var cookieParser = require('cookie-parser');
+var db_host = process.env.HOST;
+var db_password = process.env.password;
+
 app.set("view engine", "ejs");
 app.use(
     bodyParser.urlencoded({
@@ -21,7 +26,7 @@ app.use(cookieParser());
 // Express session
 app.use(
     session({
-        secret: 'assadasdawqewqdwas123',
+        secret: randomstring.generate(),
         resave: false,
         saveUninitialized: true
     })
@@ -32,17 +37,14 @@ router.use((req, res, next) => {
     res.locals.flashMessages = req.flash();
     next();
 });
-
-
-
 app.use(express.static(path.join(__dirname, 'public'))); //  "public" off of current is root
 
 //DB CONNECTION
 var con = mysql.createConnection({
-    host: "13.58.247.58",
+    host: db_host,
     user: "urlshortner",
     port: "3306",
-    password: "Hitman47@gmail.com",
+    password: db_password,
     database: "urlshortner"
 });
 
