@@ -1,5 +1,7 @@
-Redirecting to <%= data[0].url %> ....
-<a href="<%= data[0].url %>">If redirect doesn't work click here</a>
+<% if(data[0] != null)  { %>
+    Redirecting to <%= data[0].url %> ....
+    <a href="<%= data[0].url %>">If redirect doesn't work click here</a>
 <script>
     window.location.href = ('<%= data[0].url %>');
 </script>
+<% } %>

@@ -1,0 +1,8 @@
+<%- include ('partials/header.ejs') %>
+<div class="container">
+<ul class="list-group">
+    <% data.forEach(data => { %>
+    <li class="list-group-item"><%= data.url %>  Shortened-URL - <a href=""><%= data.url_value %> </a> </li>
+    <% }); %>
+  </ul>
+</div>
